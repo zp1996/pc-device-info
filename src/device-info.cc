@@ -65,6 +65,7 @@ char* get_device_verison() {
 NAN_METHOD(Get_Device_Version) {
   char* version = get_device_verison();
   info.GetReturnValue().Set(New<v8::String>(version).ToLocalChecked());
+  free(version);
 }
 
 char* get_device_model() {
@@ -130,6 +131,7 @@ NAN_METHOD(Get_Device_Type) {
   Set(type_obj, V8_STRING("memory"), New<v8::Number>(mem));
 
   info.GetReturnValue().Set(type_obj);
+  free(model);
 }
 
 NAN_MODULE_INIT(Init) {
